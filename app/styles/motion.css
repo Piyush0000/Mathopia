@@ -1,0 +1,113 @@
+/* ============================================================
+   Mathopia motion layer – playful animation for every page.
+   Respects "reduce motion" accessibility settings at the bottom.
+   ============================================================ */
+
+@keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.18); } 70% { transform: scale(.96); } 100% { transform: scale(1); } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(.4) rotate(-8deg); } 70% { opacity: 1; transform: scale(1.08) rotate(2deg); } 100% { transform: scale(1); } }
+@keyframes tada { 0% { transform: scale(1); } 15% { transform: scale(.92) rotate(-3deg); } 40%,70% { transform: scale(1.12) rotate(3deg); } 55%,85% { transform: scale(1.12) rotate(-3deg); } 100% { transform: scale(1); } }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-6deg); } }
+@keyframes hop { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-10px) rotate(-6deg); } 55% { transform: translateY(0); } 70% { transform: translateY(-3px); } }
+@keyframes wave { 0%,60%,100% { transform: translateY(0); } 20% { transform: translateY(-.18em); } 40% { transform: translateY(.04em); } }
+@keyframes wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg) scale(1.05); } 75% { transform: rotate(6deg) scale(1.05); } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(40px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes floatUp { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(-120vh) rotate(360deg); } }
+@keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,209,102,.0); } 50% { box-shadow: 0 0 0 8px rgba(255,209,102,.35); } }
+@keyframes climb { 0% { transform: scaleY(0); } 70% { transform: scaleY(1.15); } 100% { transform: scaleY(1); } }
+
+/* ---------- page & panels ---------- */
+.pagetitle { animation: rise .45s ease-out both; }
+.pagetitle .title-emoji { display: inline-block; animation: bob 3s ease-in-out infinite; }
+.tabs { animation: rise .45s .05s ease-out both; }
+.panel:not([hidden]) { animation: panelIn .4s ease-out both; }
+.tab { transition: transform .15s, background .15s; }
+.tab:hover { transform: translateY(-3px); }
+.tab.active { animation: bump .35s ease-out; }
+
+/* ---------- buttons ---------- */
+.btn { transition: transform .15s cubic-bezier(.3,1.6,.6,1), box-shadow .08s, filter .15s; }
+.btn:hover:not(:disabled) { transform: translateY(-2px) scale(1.03); filter: brightness(1.06); }
+.btn:active:not(:disabled) { transform: translateY(3px) scale(.98); }
+.seg button { transition: background .2s, color .2s, transform .15s; }
+.seg button.sel { animation: bump .3s ease-out; }
+
+/* answer buttons pop in one after another */
+.choice { animation: popIn .45s cubic-bezier(.3,1.5,.6,1) both; transition: transform .15s cubic-bezier(.3,1.6,.6,1), border-color .15s; }
+.choice:nth-child(2) { animation-delay: .07s; } .choice:nth-child(3) { animation-delay: .14s; } .choice:nth-child(4) { animation-delay: .21s; }
+.choice:hover:not(:disabled) { transform: translateY(-4px) rotate(-2deg) scale(1.05); }
+.choice.right { animation: tada .7s ease-out both; }
+
+/* feedback and changing numbers */
+.feedback.good { animation: tada .7s ease-out; }
+.feedback.bad { animation: shake .4s; }
+.bump { animation: bump .4s ease-out; }
+.prompt.bump { animation: rise .4s ease-out; }
+.score { display: inline-block; }
+
+/* flying sparkles (created by burst()) */
+.burst-bit { position: fixed; z-index: 1000; pointer-events: none; font-size: 1.5rem; will-change: transform, opacity; }
+
+/* ---------- tool-specific touches ---------- */
+.counter { animation: popIn .35s cubic-bezier(.3,1.6,.6,1); }
+.cell { transition: background .15s, transform .12s; }
+.cell:active { transform: scale(.92); }
+.cover { animation: rise .25s ease-out; }
+.blk.new { animation: popIn .4s cubic-bezier(.3,1.6,.6,1) both; }
+.editable .flat:hover, .editable .rod:hover { animation: wiggle .5s ease-in-out; }
+.col { transition: border-color .2s, transform .2s; }
+.col.warn { animation: glow 1.4s ease-in-out infinite; }
+.bundle:not([hidden]) { animation: popIn .4s ease-out, bump 1.2s 1s ease-in-out infinite; }
+.pickbtn { transition: transform .15s cubic-bezier(.3,1.6,.6,1), border-color .15s; }
+.pickbtn:hover { transform: translateY(-3px) rotate(-3deg); }
+.pickbtn.sel { animation: bump .35s ease-out; }
+.bigsvg { animation: popIn .5s cubic-bezier(.3,1.4,.6,1); }
+.real { animation: rise .5s .15s ease-out both; }
+.sortcard { animation: popIn .45s cubic-bezier(.3,1.5,.6,1) both; }
+.bin { transition: transform .15s cubic-bezier(.3,1.6,.6,1), border-color .15s; }
+.qvis > * { animation: popIn .5s cubic-bezier(.3,1.4,.6,1); }
+.track.active { animation: glow 1.6s ease-in-out infinite; }
+.track .step.top { transform-origin: bottom; animation: climb .5s cubic-bezier(.3,1.6,.6,1); }
+
+.winner div { animation: popIn .6s cubic-bezier(.3,1.5,.6,1); }
+.winner div::first-line { font-size: 3.5rem; }
+
+/* ---------- shell & home ---------- */
+.brand .logo-mark { transition: transform .4s cubic-bezier(.3,1.6,.6,1); }
+.brand:hover .logo-mark { transform: rotate(82deg) scale(1.1); }
+.toolnav a { transition: background .2s, transform .15s; }
+.toolnav a:hover { transform: translateY(-2px); }
+.toolnav a.active .ni { display: inline-block; animation: hop .7s ease-out; }
+
+.logo-lg .logo-mark i { animation: hop 2.6s ease-in-out infinite; }
+.logo-lg .logo-mark i:nth-child(2) { animation-delay: .15s; }
+.logo-lg .logo-mark i:nth-child(3) { animation-delay: .3s; }
+.logo-lg .logo-mark i:nth-child(4) { animation-delay: .45s; }
+.logo-lg .logo-word b { display: inline-block; animation: wave 2.6s ease-in-out infinite; }
+.logo-lg .logo-word b:nth-child(2) { animation-delay: .1s; }
+.logo-lg .logo-word b:nth-child(3) { animation-delay: .2s; }
+.logo-lg .logo-word b:nth-child(4) { animation-delay: .3s; }
+.hero > * { animation: rise .6s ease-out both; }
+.hero > *:nth-child(2) { animation-delay: .15s; }
+.hero > *:nth-child(3) { animation-delay: .3s; }
+
+.tool-card { animation: cardIn .7s cubic-bezier(.2,.9,.3,1.1) both; transition: transform .25s cubic-bezier(.3,1.6,.6,1), box-shadow .25s; }
+.tool-card:nth-child(1) { animation-delay: .25s; } .tool-card:nth-child(2) { animation-delay: .35s; }
+.tool-card:nth-child(3) { animation-delay: .45s; } .tool-card:nth-child(4) { animation-delay: .55s; }
+.tool-card:nth-child(n+5) { animation-delay: .65s; }
+.tool-card:hover { box-shadow: 0 14px 0 var(--line), 0 20px 40px rgba(7,59,76,.14); }
+.tool-card:hover .tool-icon { animation: wiggle .6s ease-in-out; }
+.tool-card .play { display: inline-block; margin-top: 14px; font-weight: 800; color: var(--blue); transition: transform .2s; }
+.tool-card:hover .play { transform: translateX(6px); }
+
+/* floating maths symbols behind the home page */
+.floaters { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.floaters span { position: absolute; bottom: -80px; font-weight: 800; opacity: .13; animation: floatUp linear infinite; }
+.home-wrap { position: relative; z-index: 1; }
+
+/* ---------- accessibility: honour "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .floaters { display: none; }
+}

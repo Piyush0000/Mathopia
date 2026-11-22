@@ -1,0 +1,19 @@
+/* ten-frames */
+.frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;margin:14px 0}
+  .tf{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:6px;background:var(--navy);border-radius:12px;width:min(540px,90vw)}
+  .frames.two .tf{width:min(430px,90vw)}
+  .cell{aspect-ratio:1;background:#fff;border-radius:5px;display:grid;place-items:center;cursor:pointer;user-select:none}
+  .cell:hover{background:#eef6ff}
+  .cell.static{cursor:default}
+  .cell.static:hover{background:#fff}
+  .counter{width:78%;height:78%;border-radius:50%;box-shadow:inset -5px -7px 0 rgba(0,0,0,.18),0 2px 3px rgba(0,0,0,.2);animation:pop .22s ease-out}
+  .counter.red{background:var(--red)}
+  .counter.yellow{background:var(--yellow)}
+  .counter.blue{background:var(--blue)}
+  .cover{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#8e6cdf 0 18px,#7a5bd0 18px 36px);border-radius:12px;display:grid;place-items:center;color:#fff;font-size:4rem;font-weight:800;cursor:default}
+  .bignum{font-size:5rem;font-weight:800;text-align:center;line-height:1;color:var(--navy)}
+  .sub{text-align:center;font-size:1.4rem;color:var(--muted);min-height:2rem}
+  .dot{display:inline-block;width:1em;height:1em;border-radius:50%;vertical-align:-.15em}
+  .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.blue{background:var(--blue)}
+  .colorpick button{font-size:1.2rem}
+  .equation{font-size:2.4rem;font-weight:800;text-align:center;color:var(--navy);min-height:3.4rem}

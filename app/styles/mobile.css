@@ -1,0 +1,128 @@
+/* ============================================================
+   Phone & small-tablet layout. Loaded last so it wins.
+   ============================================================ */
+
+/* everywhere: quicker taps (no double-tap zoom delay) */
+button, a, .cell, .bin, .pickbtn, .pickable, .flat, .rod { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.toolnav .ni { margin-right: 4px; }
+.navhome { display: none !important; }
+
+@media (max-width: 760px) {
+  /* ---------- shell ---------- */
+  body { font-size: 16px; padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  header.top { padding: 8px 12px; padding-top: calc(8px + env(safe-area-inset-top)); flex-wrap: nowrap; justify-content: space-between; }
+  header.top .brand .logo-word { display: inline !important; }
+  .logo-sm { font-size: 1.35rem; }
+  #mute { padding: 4px 10px; font-size: 1.1rem; }
+
+  .toolnav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(64px, 1fr);
+    overflow-x: auto; gap: 2px;
+    background: var(--navy); box-shadow: 0 -4px 16px rgba(0,0,0,.18);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .toolnav a, .toolnav a.navhome {
+    display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+    padding: 4px 2px; border-radius: 12px; background: transparent; font-size: .72rem; line-height: 1.1; white-space: nowrap;
+  }
+  .toolnav .ni { font-size: 1.35rem; margin: 0; }
+  .toolnav a.active { background: rgba(255,209,102,.95); color: var(--navy); }
+
+  .pagetitle { font-size: 1.3rem; padding: 12px 12px 0; }
+  main { padding: 0 8px 16px; }
+  .panel { padding: 12px; border-radius: 0 14px 14px 14px; min-height: 0; }
+
+  /* tabs scroll sideways instead of wrapping */
+  .tabs { flex-wrap: nowrap; overflow-x: auto; padding: 10px 8px 0; gap: 4px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { white-space: nowrap; padding: 8px 14px; font-size: .95rem; flex: none; }
+
+  /* toolbars & segmented controls */
+  .toolbar, .racebar { gap: 8px 10px; margin-bottom: 10px; }
+  .toolbar .spacer { display: none; }
+  .toolbar .label { font-size: .9rem; }
+  .seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .seg::-webkit-scrollbar { display: none; }
+  .seg button { white-space: nowrap; padding: 7px 11px; font-size: .9rem; min-height: 38px; }
+  .btn { font-size: .95rem; padding: 8px 14px; min-height: 42px; }
+  .btn.big { font-size: 1.15rem; padding: 10px 20px; }
+  .score { font-size: 1rem; padding: 4px 12px; }
+
+  .prompt { font-size: 1.3rem; margin: 4px 0 8px; }
+  .feedback { font-size: 1.15rem; min-height: 2rem; }
+  .choices { gap: 8px; }
+  .choice { font-size: 1.5rem; min-width: 64px; padding: 8px 14px; border-radius: 14px; }
+  .btnrow { gap: 8px; }
+
+  /* ---------- Ten Frames ---------- */
+  .frames { gap: 14px; margin: 8px 0; }
+  .tf, .frames.two .tf { width: 100%; max-width: 540px; gap: 4px; padding: 4px; }
+  .bignum { font-size: 3.6rem; }
+  .sub { font-size: 1.05rem; }
+  .equation { font-size: 1.8rem; min-height: 2.6rem; }
+  .cover { font-size: 2.6rem; }
+
+  /* ---------- Place Value: hundreds on top, tens + ones below ---------- */
+  .mat { --u: 8px; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mat .col.H { grid-column: 1 / -1; }
+  .mat .col { min-height: 0; padding: 8px 6px; }
+  .mat .area { min-height: 110px; }
+  .mat .digit { font-size: 2.2rem; }
+  .mat .colhead { font-size: 1.05rem; }
+  .colbtns .btn { padding: 4px 14px; font-size: 1.3rem; }
+  .bundle { font-size: .8rem !important; }
+  .total { font-size: 2.6rem; }
+  .expanded { font-size: 1.05rem; text-align: center; }
+  .target { padding: 0 12px; }
+
+  /* ---------- Shapes ---------- */
+  .explore { grid-template-columns: 1fr; gap: 10px; }
+  .picker { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+  .picker h3 { display: none; }
+  .picks { display: flex; gap: 6px; margin: 0; }
+  .pickbtn { width: 58px; height: 58px; flex: none; padding: 3px; }
+  .sname { font-size: 1.8rem; min-height: 2.4rem; }
+  .bigsvg { width: min(300px, 100%); }
+  .real { font-size: 2.2rem; min-height: 2.8rem; }
+  .tally { font-size: 2rem; min-height: 2.6rem; }
+  .props { flex-direction: row; flex-wrap: wrap; }
+  .props .btn { width: auto; flex: 1 1 30%; }
+
+  .sortitem { height: 170px; }
+  .sortitem .sortcard { width: 160px; height: 160px; font-size: 5.5rem; }
+  .sortitem .sortcard svg { width: 140px; height: 140px; }
+  .bins { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+  .bin { min-height: 110px; padding: 8px; }
+  .bin .t { font-size: 1.05rem; }
+  .bin .tray { font-size: 1.5rem; }
+  .bin .tray svg { width: 34px; height: 34px; }
+
+  .racebar input { width: calc(50% - 30px); }
+  .race { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .qcard { grid-column: 1 / -1; order: -1; padding: 4px; }
+  .qvis { min-height: 150px; font-size: 5.5rem; }
+  .qvis svg { width: 160px; height: 160px; }
+  .choice svg { width: 64px; height: 64px; }
+  .choice.txt { font-size: 1.15rem; }
+  .track { padding: 6px; }
+  .track .ladder { min-height: 200px; }
+  .track .trophy { font-size: 1.8rem; }
+  .track .tname { font-size: 1rem; }
+  .winner div { padding: 24px 28px; font-size: 1.8rem; margin: 0 16px; }
+
+  /* ---------- Home ---------- */
+  .hero { padding: 24px 16px 4px; }
+  .hero .tagline { font-size: 1.2rem; }
+  .hero p { font-size: 1rem; }
+  .cards { grid-template-columns: 1fr; gap: 16px; margin: 18px auto; padding: 0 12px; }
+  .tool-card { padding: 18px; }
+  .tool-card .tool-icon { height: 70px; font-size: 2.6rem; }
+  .tool-card h2 { font-size: 1.4rem; }
+}
+
+@media (max-width: 380px) {
+  .toolnav a { font-size: .66rem; }
+  .choice { font-size: 1.3rem; min-width: 56px; padding: 6px 10px; }
+  .mat { --u: 7px; }
+}

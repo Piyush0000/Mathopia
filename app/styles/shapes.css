@@ -1,0 +1,56 @@
+/* shapes */
+svg text{font-family:var(--font-baloo),"Comic Sans MS",sans-serif;font-weight:800}
+  /* explore */
+  .explore{display:grid;grid-template-columns:220px 1fr 260px;gap:20px;align-items:start}
+  .picker h3{margin:4px 0 6px;font-size:1.1rem;color:var(--muted)}
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+  .pickbtn{background:#fff;border:3px solid var(--line);border-radius:12px;padding:4px;cursor:pointer;aspect-ratio:1}
+  .pickbtn svg{width:100%;height:100%;display:block}
+  .pickbtn.sel{border-color:var(--blue);background:#e8f6fc}
+  .shstage{text-align:center}
+  .sname{font-size:2.6rem;font-weight:800;color:var(--navy);text-transform:capitalize;min-height:3.4rem}
+  .bigsvg{width:min(440px,100%);height:auto}
+  .real{font-size:3rem;letter-spacing:.2em;min-height:4rem}
+  .countbox{background:#f8f3ea;border-radius:16px;padding:14px}
+  .countbox h3{margin:0 0 8px}
+  .props{display:flex;flex-direction:column;gap:8px}
+  .props .btn{width:100%}
+  .props .btn.sel{background:var(--orange)}
+  .tally{font-size:2.6rem;font-weight:800;text-align:center;color:var(--orange);min-height:3.4rem}
+  .msg{font-size:1.2rem;font-weight:700;text-align:center;min-height:3rem}
+  .ctrl{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+  .hit{cursor:pointer}
+  @media (max-width:900px){.explore{grid-template-columns:1fr}.picks{grid-template-columns:repeat(6,1fr)}}
+  /* sort */
+  .sortitem{display:flex;justify-content:center;align-items:center;height:230px}
+  .sortitem .sortcard{background:#fff;border:4px dashed var(--line);border-radius:24px;width:220px;height:220px;display:grid;place-items:center;font-size:8rem}
+  .sortitem .sortcard svg{width:190px;height:190px}
+  .bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:10px}
+  .bin{background:#f8f3ea;border:4px solid var(--line);border-radius:20px;padding:10px;cursor:pointer;min-height:160px;text-align:center;transition:transform .1s}
+  .bin:hover{border-color:var(--blue);transform:translateY(-3px)}
+  .bin .t{font-size:1.4rem;font-weight:800}
+  .bin .tray{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px;font-size:2rem}
+  .bin .tray svg{width:44px;height:44px}
+  .bin .tray > *{animation:pop .3s}
+  /* race */
+  .racebar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:14px}
+  .racebar input{font:inherit;font-weight:700;border:2px solid var(--line);border-radius:10px;padding:4px 10px;width:150px}
+  .race{display:grid;grid-template-columns:150px 1fr 150px;gap:20px;align-items:stretch}
+  .track{display:flex;flex-direction:column;align-items:center;border-radius:20px;padding:10px;background:#f8f3ea;border:4px solid transparent;transition:border-color .3s, box-shadow .3s}
+  .track.active{border-color:currentColor;box-shadow:0 0 0 6px rgba(0,0,0,.05)}
+  .track .tname{font-weight:800;font-size:1.3rem;text-align:center}
+  .track .ladder{position:relative;flex:1;width:100%;display:flex;flex-direction:column-reverse;gap:4px;margin:6px 0;min-height:420px}
+  .track .step{flex:1;border-radius:8px;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-weight:800;color:#c9bca5}
+  .track .step.done{background:currentColor;border-color:currentColor}
+  .track .step.done span{color:#fff}
+  .track .trophy{font-size:2.4rem}
+  .track.redT{color:var(--red)} .track.blueT{color:var(--blue)}
+  .qcard{background:#fff;border-radius:20px;padding:10px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .turn{font-size:1.3rem;font-weight:800}
+  .qvis{display:flex;justify-content:center;align-items:center;min-height:210px;font-size:8rem}
+  .qvis svg{width:220px;height:220px}
+  .choice svg{width:90px;height:90px;display:block}
+  .choice.txt{font-size:1.5rem;text-transform:capitalize}
+  .winner{position:fixed;inset:0;background:rgba(7,59,76,.75);display:grid;place-items:center;z-index:50}
+  .winner div{background:#fff;border-radius:28px;padding:40px 60px;text-align:center;font-size:2.6rem;font-weight:800}
+  @media (max-width:800px){.race{grid-template-columns:1fr 1fr}.qcard{grid-column:1 / -1;order:-1}.track .ladder{min-height:220px}}

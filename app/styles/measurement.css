@@ -1,0 +1,8 @@
+/* measurement */
+.stage{width:100%;max-width:1000px;margin:0 auto;display:block}
+  .stage text{font-family:var(--font-baloo),"Comic Sans MS",sans-serif;font-weight:800}
+  .pickable{cursor:pointer}
+  .pickable:hover .hl{opacity:.35}
+  .hl{opacity:0;transition:opacity .2s}
+  .mv{transition:transform .9s ease-in-out}
+  .btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
