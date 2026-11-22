@@ -3,7 +3,8 @@ import { TOOLS } from '@/lib/tools';
 import Logo, { TAGLINE } from '@/components/Logo';
 import Floaters from '@/components/Floaters';
 
-function Icon({ slug }) {
+function Icon({ slug, icon }) {
+  if (icon) return <>{icon}</>;
   if (slug === 'ten-frames') {
     const fill = ['r', 'r', 'r', 'r', 'r', 'y', 'y', '', '', ''];
     return <div className="mini-tf">{fill.map((c, i) => <i key={i} className={c} />)}</div>;
@@ -33,7 +34,7 @@ export default function Home() {
       <div className="cards">
         {TOOLS.map(t => (
           <Link key={t.slug} href={`/${t.slug}`} className="tool-card" style={{ borderTopColor: t.accent }}>
-            <div className="tool-icon"><Icon slug={t.slug} /></div>
+            <div className="tool-icon"><Icon slug={t.slug} icon={t.icon} /></div>
             <h2>{t.title}</h2>
             <p>{t.blurb}</p>
             <ul>{t.modes.map(m => <li key={m}>{m}</li>)}</ul>

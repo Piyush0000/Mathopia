@@ -112,3 +112,9 @@ header.top .brand{color:#fff;text-decoration:none;font-weight:800;font-size:1.4r
 .logo-lg .logo-word b:nth-child(2){color:#f4b400}
 .logo-lg .logo-word b:nth-child(4){color:var(--blue)}
 .hero .tagline{font-size:1.6rem;font-weight:800;color:var(--orange);margin-top:4px}
+
+/* ---------- 9+ tools: wider home grid, single-row desktop nav ---------- */
+.cards{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));max-width:1240px}
+.toolnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.toolnav::-webkit-scrollbar{display:none}
+.toolnav a{flex:none}

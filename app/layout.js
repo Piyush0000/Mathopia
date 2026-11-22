@@ -5,6 +5,7 @@ import './styles/tenFrames.css';
 import './styles/placeValue.css';
 import './styles/measurement.css';
 import './styles/shapes.css';
+import './styles/newgames.css';
 import './styles/motion.css';
 import './styles/mobile.css';
 
